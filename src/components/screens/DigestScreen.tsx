@@ -9,67 +9,67 @@ interface DigestScreenProps {
 
 const DigestScreen = ({ onNavigate }: DigestScreenProps) => {
   return (
-    <div className="min-h-screen bg-gradient-background pb-8">
+    <div className="min-h-screen bg-slate-900 pb-8">
       {/* Header */}
-      <header className="bg-card border-b px-4 py-4 shadow-sm">
+      <header className="border-b border-slate-800 bg-slate-900 px-4 py-4">
         <div className="mx-auto flex max-w-4xl items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="rounded-full bg-primary/10 p-2">
-              <Users className="h-5 w-5 text-primary" />
+            <div className="rounded-xl bg-slate-800 p-2">
+              <Users className="h-5 w-5 text-lime-400" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-foreground">NetworkIQ</h1>
-              <p className="text-sm text-muted-foreground">Sarah Chen</p>
+              <h1 className="text-lg font-bold tracking-tight text-white">NetworkIQ</h1>
+              <p className="text-sm text-gray-400">Sarah Chen</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Bell className="h-5 w-5 text-muted-foreground" />
-            <Settings className="h-5 w-5 text-muted-foreground" />
-            <User className="h-5 w-5 text-muted-foreground" />
+            <Bell className="h-5 w-5 text-gray-400" />
+            <Settings className="h-5 w-5 text-gray-400" />
+            <User className="h-5 w-5 text-gray-400" />
           </div>
         </div>
       </header>
 
       <div className="mx-auto max-w-4xl px-4 pt-6">
         {/* Date */}
-        <h2 className="mb-6 text-2xl font-bold text-foreground">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-white">
           Monday, October 14
         </h2>
 
         {/* Stats Cards */}
         <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <Card className="p-4 shadow-sm">
+          <Card className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-lg">
             <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-primary/10 p-2">
-                <TrendingUp className="h-5 w-5 text-primary" />
+              <div className="rounded-xl bg-slate-900 p-3">
+                <TrendingUp className="h-5 w-5 text-lime-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">3</div>
-                <div className="text-sm text-muted-foreground">Opportunities</div>
+                <div className="text-3xl font-bold text-lime-400">3</div>
+                <div className="text-sm text-gray-400">Opportunities</div>
               </div>
             </div>
           </Card>
           
-          <Card className="p-4 shadow-sm">
+          <Card className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-lg">
             <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-success/10 p-2">
-                <Users className="h-5 w-5 text-success" />
+              <div className="rounded-xl bg-slate-900 p-3">
+                <Users className="h-5 w-5 text-gray-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">847</div>
-                <div className="text-sm text-muted-foreground">Total Connections</div>
+                <div className="text-3xl font-bold text-white">847</div>
+                <div className="text-sm text-gray-400">Total Connections</div>
               </div>
             </div>
           </Card>
           
-          <Card className="p-4 shadow-sm">
+          <Card className="rounded-2xl border border-slate-700 bg-slate-800 p-6 shadow-lg">
             <div className="flex items-center gap-3">
-              <div className="rounded-lg bg-ai/10 p-2">
-                <Activity className="h-5 w-5 text-ai" />
+              <div className="rounded-xl bg-slate-900 p-3">
+                <Activity className="h-5 w-5 text-gray-400" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-foreground">12</div>
-                <div className="text-sm text-muted-foreground">Active This Week</div>
+                <div className="text-3xl font-bold text-white">12</div>
+                <div className="text-sm text-gray-400">Active This Week</div>
               </div>
             </div>
           </Card>
@@ -79,7 +79,7 @@ const DigestScreen = ({ onNavigate }: DigestScreenProps) => {
         <div className="space-y-4">
           {/* Jennifer Liu - HIGH PRIORITY - CLICKABLE */}
           <Card 
-            className="cursor-pointer border-2 border-primary p-6 shadow-md transition-all hover:shadow-lg"
+            className="cursor-pointer rounded-2xl border-2 border-lime-400/30 bg-white p-8 shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
             onClick={() => onNavigate("detail")}
           >
             <div className="mb-4 flex items-start justify-between">
@@ -87,25 +87,25 @@ const DigestScreen = ({ onNavigate }: DigestScreenProps) => {
                 <div className="text-4xl">👩‍💼</div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-bold text-foreground">Jennifer Liu</h3>
-                    <Badge className="bg-primary text-primary-foreground">HIGH PRIORITY</Badge>
+                    <h3 className="text-xl font-bold tracking-tight text-slate-900">Jennifer Liu</h3>
+                    <Badge className="bg-lime-400 text-xs font-semibold uppercase tracking-wider text-slate-900">HIGH PRIORITY</Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">VP of Engineering</p>
-                  <p className="text-sm font-medium text-foreground">DataCore Systems</p>
+                  <p className="text-sm text-gray-600">VP of Engineering</p>
+                  <p className="text-sm font-medium text-slate-900">DataCore Systems</p>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-sm text-muted-foreground">Connection Strength</div>
-                <div className="text-2xl font-bold text-primary">85%</div>
+                <div className="text-sm text-gray-500">Connection Strength</div>
+                <div className="text-2xl font-bold text-lime-400">85%</div>
               </div>
             </div>
             
-            <div className="mb-4 rounded-lg bg-alert-light p-4">
+            <div className="mb-4 rounded-lg border border-lime-400/20 bg-lime-400/10 p-4">
               <div className="flex items-start gap-2">
-                <AlertCircle className="h-5 w-5 flex-shrink-0 text-alert" />
+                <AlertCircle className="h-5 w-5 flex-shrink-0 text-lime-400" />
                 <div>
-                  <p className="font-semibold text-alert-foreground">Perfect Timing to Reconnect</p>
-                  <p className="text-sm text-foreground">
+                  <p className="font-semibold text-slate-900">Perfect Timing to Reconnect</p>
+                  <p className="text-sm text-gray-700">
                     DataCore Systems announced partnership with AWS - TechCrunch, 2 hours ago
                   </p>
                 </div>
@@ -113,49 +113,49 @@ const DigestScreen = ({ onNavigate }: DigestScreenProps) => {
             </div>
             
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Last contact: <span className="font-semibold">14 months ago</span></span>
-              <span className="font-semibold text-primary">View Details →</span>
+              <span className="text-gray-600">Last contact: <span className="font-semibold">14 months ago</span></span>
+              <span className="font-semibold text-lime-400">View Details →</span>
             </div>
           </Card>
 
           {/* Marcus Chen - NOT CLICKABLE */}
-          <Card className="p-6 opacity-60 shadow-sm">
+          <Card className="rounded-2xl bg-slate-800 p-6 opacity-60 shadow-sm">
             <div className="mb-4 flex items-start justify-between">
               <div className="flex items-start gap-4">
                 <div className="text-4xl">👨‍💼</div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground">Marcus Chen</h3>
-                  <p className="text-sm text-muted-foreground">CTO</p>
-                  <p className="text-sm font-medium text-foreground">TechVision Inc</p>
+                  <h3 className="text-xl font-bold text-white">Marcus Chen</h3>
+                  <p className="text-sm text-gray-400">CTO</p>
+                  <p className="text-sm font-medium text-gray-200">TechVision Inc</p>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-sm text-muted-foreground">Connection Strength</div>
-                <div className="text-2xl font-bold text-foreground">72%</div>
+                <div className="text-sm text-gray-500">Connection Strength</div>
+                <div className="text-2xl font-bold text-white">72%</div>
               </div>
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-gray-400">
               Last contact: <span className="font-semibold">8 months ago</span>
             </div>
           </Card>
 
           {/* Priya Patel - NOT CLICKABLE */}
-          <Card className="p-6 opacity-60 shadow-sm">
+          <Card className="rounded-2xl bg-slate-800 p-6 opacity-60 shadow-sm">
             <div className="mb-4 flex items-start justify-between">
               <div className="flex items-start gap-4">
                 <div className="text-4xl">👩‍💼</div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground">Priya Patel</h3>
-                  <p className="text-sm text-muted-foreground">Head of Product</p>
-                  <p className="text-sm font-medium text-foreground">InnovateLabs</p>
+                  <h3 className="text-xl font-bold text-white">Priya Patel</h3>
+                  <p className="text-sm text-gray-400">Head of Product</p>
+                  <p className="text-sm font-medium text-gray-200">InnovateLabs</p>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-sm text-muted-foreground">Connection Strength</div>
-                <div className="text-2xl font-bold text-foreground">68%</div>
+                <div className="text-sm text-gray-500">Connection Strength</div>
+                <div className="text-2xl font-bold text-white">68%</div>
               </div>
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-gray-400">
               Last contact: <span className="font-semibold">11 months ago</span>
             </div>
           </Card>

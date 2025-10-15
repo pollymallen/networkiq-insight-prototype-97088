@@ -23,12 +23,12 @@ const ComposerScreen = ({ onNavigate }: ComposerScreenProps) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-background pb-8">
+    <div className="min-h-screen bg-slate-900 pb-8">
       <div className="mx-auto max-w-3xl px-4 pt-6">
         <Button 
           variant="ghost" 
           size="sm" 
-          className="mb-6"
+          className="mb-6 text-white hover:bg-white/10"
           onClick={() => onNavigate("detail")}
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -39,18 +39,18 @@ const ComposerScreen = ({ onNavigate }: ComposerScreenProps) => {
         <div className="mb-6 flex items-center gap-4">
           <div className="text-4xl">👩‍💼</div>
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Jennifer Liu</h1>
-            <p className="text-sm text-muted-foreground">VP of Engineering at DataCore Systems</p>
+            <h1 className="text-2xl font-bold tracking-tight text-white">Jennifer Liu</h1>
+            <p className="text-sm text-gray-300">VP of Engineering at DataCore Systems</p>
           </div>
         </div>
 
         {/* AI Notice */}
-        <Card className="mb-4 border-2 border-ai bg-ai-light p-4 shadow-md">
+        <Card className="mb-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-md">
           <div className="flex items-start gap-3">
-            <Sparkles className="h-5 w-5 flex-shrink-0 text-ai" />
+            <Sparkles className="h-5 w-5 flex-shrink-0 text-lime-400" />
             <div>
-              <h3 className="mb-1 font-bold text-foreground">AI-Generated Message</h3>
-              <p className="text-sm text-foreground">
+              <h3 className="mb-1 font-bold text-slate-900">AI-Generated Message</h3>
+              <p className="text-sm text-gray-700">
                 This message was crafted based on your relationship history, recent news, 
                 and best practices for reconnection. Feel free to edit it to match your style.
               </p>
@@ -59,31 +59,31 @@ const ComposerScreen = ({ onNavigate }: ComposerScreenProps) => {
         </Card>
 
         {/* Message Composer */}
-        <Card className="mb-4 p-6 shadow-lg">
-          <label className="mb-2 block text-sm font-medium text-foreground">
+        <Card className="mb-4 rounded-2xl bg-white p-8 shadow-2xl">
+          <label className="mb-2 block text-sm font-medium text-slate-900">
             Your Message
           </label>
           <Textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="min-h-[150px] resize-none text-base"
+            className="min-h-[150px] resize-none bg-gray-50 text-base"
             placeholder="Type your message..."
           />
-          <div className="mt-2 text-right text-sm text-muted-foreground">
+          <div className="mt-2 text-right text-sm text-gray-600">
             {message.split(' ').length} words
           </div>
         </Card>
 
         {/* Why This Works */}
-        <Card className="mb-6 p-6 shadow-md">
-          <h3 className="mb-4 font-bold text-foreground">Why this message works:</h3>
+        <Card className="mb-6 rounded-2xl bg-white p-8 shadow-2xl">
+          <h3 className="mb-4 font-bold tracking-tight text-slate-900">Why this message works:</h3>
           <div className="space-y-3">
             {whyThisWorks.map((reason, index) => (
               <div key={index} className="flex items-start gap-3">
-                <div className="mt-0.5 rounded-full bg-success/10 p-1">
-                  <Check className="h-4 w-4 text-success" />
+                <div className="mt-0.5 rounded-full bg-lime-400/20 p-1">
+                  <Check className="h-4 w-4 text-lime-400" />
                 </div>
-                <p className="text-sm text-foreground">{reason}</p>
+                <p className="text-sm text-gray-700">{reason}</p>
               </div>
             ))}
           </div>
@@ -92,15 +92,14 @@ const ComposerScreen = ({ onNavigate }: ComposerScreenProps) => {
         {/* Action Buttons */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Button 
-            variant="outline" 
             size="lg"
-            className="font-semibold"
+            className="rounded-lg bg-slate-800 px-8 py-4 font-semibold text-white shadow-lg transition-all hover:bg-slate-700"
           >
             Save Draft
           </Button>
           <Button 
             size="lg"
-            className="bg-gradient-primary font-semibold shadow-md"
+            className="rounded-lg bg-lime-400 px-8 py-4 font-semibold text-slate-900 shadow-lg shadow-lime-400/20 transition-all hover:scale-105 hover:bg-lime-300"
             onClick={() => onNavigate("success")}
           >
             <Send className="mr-2 h-5 w-5" />
