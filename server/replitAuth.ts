@@ -43,6 +43,7 @@ export function getSession() {
     cookie: {
       httpOnly: true,
       secure: true,
+      sameSite: "lax",
       maxAge: sessionTtl,
     },
   });
@@ -59,14 +60,19 @@ export async function setupAuth(app: Express) {
       const client = getClient(issuer, req.hostname);
       const state = generators.state();
       const nonce = generators.nonce();
+      const code_verifier = generators.codeVerifier();
+      const code_challenge = generators.codeChallenge(code_verifier);
 
       (req.session as any).state = state;
       (req.session as any).nonce = nonce;
+      (req.session as any).code_verifier = code_verifier;
 
       const authUrl = client.authorizationUrl({
         scope: "openid email profile offline_access",
         state,
         nonce,
+        code_challenge,
+        code_challenge_method: "S256",
       });
 
       res.redirect(authUrl);
@@ -82,6 +88,7 @@ export async function setupAuth(app: Express) {
       const params = client.callbackParams(req);
       const sessionState = (req.session as any).state;
       const sessionNonce = (req.session as any).nonce;
+      const codeVerifier = (req.session as any).code_verifier;
 
       if (params.state !== sessionState) {
         return res.status(400).send("State mismatch");
@@ -90,17 +97,17 @@ export async function setupAuth(app: Express) {
       const tokenSet = await client.callback(
         `https://${req.hostname}/api/callback`,
         params,
-        { state: sessionState, nonce: sessionNonce }
+        { state: sessionState, nonce: sessionNonce, code_verifier: codeVerifier }
       );
 
       const claims = tokenSet.claims();
 
       await storage.upsertUser({
-        id: claims.sub,
-        email: claims.email || null,
-        firstName: claims.first_name || null,
-        lastName: claims.last_name || null,
-        profileImageUrl: claims.profile_image_url || null,
+        id: claims.sub as string,
+        email: (claims.email as string) || null,
+        firstName: (claims.first_name as string) || null,
+        lastName: (claims.last_name as string) || null,
+        profileImageUrl: (claims.profile_image_url as string) || null,
       });
 
       (req.session as any).user = {
@@ -112,6 +119,7 @@ export async function setupAuth(app: Express) {
 
       delete (req.session as any).state;
       delete (req.session as any).nonce;
+      delete (req.session as any).code_verifier;
 
       res.redirect("/");
     } catch (error) {
