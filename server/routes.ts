@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { setupAuth, isAuthenticated } from "./replitAuth";
+import { storage } from "./storage.js";
+import { setupAuth, isAuthenticated } from "./replitAuth.js";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   await setupAuth(app);

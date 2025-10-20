@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import * as schema from "@shared/schema";
+import * as schema from "../shared/schema.js";
 
 if (!process.env.DATABASE_URL) {
   throw new Error(
@@ -9,4 +9,4 @@ if (!process.env.DATABASE_URL) {
 }
 
 export const connection = postgres(process.env.DATABASE_URL);
-export const db = drizzle({ client: connection, schema, casing: "snake_case" });
+export const db = drizzle(connection, { schema });
